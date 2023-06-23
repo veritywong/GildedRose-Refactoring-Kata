@@ -54,4 +54,24 @@ describe("Gilded Rose", function() {
     expect(itemUpdate[0].sellIn).toBe(4);
     expect(itemUpdate[0].quality).toBe(4);
   })
+
+  it("decrease quality to 0 after the concert", () => {
+    const items = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10);
+    const gildedRose = new Shop([items]);
+    const itemUpdate = gildedRose.updateQuality();
+    expect(itemUpdate[0].name).toBe("Backstage passes to a TAFKAL80ETC concert");
+    expect(itemUpdate[0].sellIn).toBe(-1);
+    expect(itemUpdate[0].quality).toBe(0);
+  })
+
+  it("should decrease quality by 2", () => {
+    const items = new Item("Conjured", 5, 50);
+    const gildedRose = new Shop([items]);
+    const itemUpdate = gildedRose.updateQuality();
+    expect(itemUpdate[0].name).toBe("Conjured");
+    expect(itemUpdate[0].sellIn).toBe(4);
+    expect(itemUpdate[0].quality).toBe(48);
+  })
+
+
 });
