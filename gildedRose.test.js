@@ -1,7 +1,16 @@
 const {Shop, Item} = require("./gildedRose");
 
 describe("Gilded Rose", function() {
-  it("should foo", function() {
+  it("should decrease quality and sellIn by 1 when regular item", function() {
+    const items = new Item("foo", 0, 1)
+    const gildedRose = new Shop([items]);
+    const itemUpdate = gildedRose.updateQuality();
+    expect(itemUpdate[0].name).toBe("foo");
+    expect(itemUpdate[0].sellIn).toBe(-1);
+    expect(itemUpdate[0].quality).toBe(0);
+  });
+  
+  it("should not decrease quality of regular item below 0", function() {
     const items = new Item("foo", 0, 0)
     const gildedRose = new Shop([items]);
     const itemUpdate = gildedRose.updateQuality();
@@ -71,6 +80,15 @@ describe("Gilded Rose", function() {
     expect(itemUpdate[0].name).toBe("Conjured");
     expect(itemUpdate[0].sellIn).toBe(4);
     expect(itemUpdate[0].quality).toBe(48);
+  })
+
+  it("should not let quality go above 50", () => {
+    const items = new Item("Aged Brie", 10, 50);
+    const gildedRose = new Shop([items]);
+    const itemUpdate = gildedRose.updateQuality();
+    expect(itemUpdate[0].name).toBe("Aged Brie");
+    expect(itemUpdate[0].sellIn).toBe(9);
+    expect(itemUpdate[0].quality).toBe(50);
   })
 
 
