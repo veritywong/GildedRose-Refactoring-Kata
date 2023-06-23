@@ -1,5 +1,13 @@
 # GildedRose-Refactoring-Kata
 
+## Approach
+I started by reading throught the specifications and taking notes on each shop item and how they needed to be updated.
+I then wrote tests for each item to show that the current code fulfilled the criteria.
+Once I had all tests passing, I started refactoring the codebase. I started by separating each update into its own item category and calling this in the general updateQuality function. As I updated each item, I ran the tests to ensure the requirementes were still being met.
+Once I had refactored the existing code, I created a new test for the new item to be added, 'Conjured', I then went on to write a function update for this.
+Once I had all tests passing, I re-read through the specifications, and added any tests and specifications I had missed.
+Finally I updated the README to summarise the expectations for each item, and to include an input and output expectation for each item and each test. 
+
 ======================================
 Gilded Rose Requirements Specification
 ======================================
