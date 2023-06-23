@@ -39,14 +39,14 @@ class Shop {
   }
 
   updateBackstagePasses(item) {
-    item.quality++;
-
     if (item.sellIn < 1) {
       item.quality = 0;
-    } else if (item.sellIn < 6 && item.quality < 50) {
+    } else if (item.sellIn < 6 && item.quality < 48) {
+      item.quality += 3;
+    } else if (item.sellIn < 11 && item.quality < 49) {
       item.quality += 2;
-    } else if (item.sellIn < 11 && item.quality < 50) {
-      item.quality++;
+    } else if (item.quality < 50) {
+        item.quality++;
     }
   }
 
