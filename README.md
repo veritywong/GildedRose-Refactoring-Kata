@@ -112,3 +112,8 @@ Sulfuras, Hand of Ragnaros:
             INPUTS           || OUTPUTS
             sellIn, quality
             0, 80            || 0, 80
+
+
+## Passing Tests
+
+![Passing Tests](./images/GildedRosePassingTests.png)
