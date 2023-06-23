@@ -1,20 +1,5 @@
 # GildedRose-Refactoring-Kata
 
-SellIn - number of days to sell item, at end of day -1 
-
-Quality Value - how valuable the item is, at end of day -1
-when SellIn < 0 , quality value reduces by - 2 (never gets below 0 or higher than 50)
-
-Exceptions:
-Brie - quality + 1 each day
-"Sulfuras" - quality alwasy 80 and no SellIn date
-Back Stage Passes - sellIn <= 10 , quality +2
-                    sellIn <=5   , quliaty +3
-                    sellIn = 0 , quality = 0
-
-ADD
-'Conjured' - quality -2 each day
-
 ======================================
 Gilded Rose Requirements Specification
 ======================================
@@ -53,3 +38,69 @@ for you).
 
 Just for clarification, an item can never have its Quality increase above 50, however "Sulfuras" is a
 legendary item and as such its Quality is 80 and it never alters.
+
+## Notes from Requirement Specification
+
+class Shop updates the quality and sellIn of each item. The sellIn is the number of days to sell the item.
+
+When Regular Item:
+    qualityUpdates => sellIn - 1, quality - 1
+    (quality can not go below 0)
+    if sellIn < 0 , quality - 2
+
+When Aged Brie:
+    qualityUpdates => sellIn -1, qualtiy + 1
+    (quality can not go above 50)
+
+
+When Sulfuras:
+    qualityUpdates => sellIn always 0, quality always 80
+
+When BackStage Passes:
+
+    sellIn > 5 && sellIn <= 10 , quality +2
+    sellIn <=5   , quliaty +3
+    sellIn <= 0 , quality = 0
+
+ADD
+'Conjured' - quality -2 each day, and -4 when sellIn < 0
+
+## INPUTS and OUTPUTS
+
+
+Regular Item:   
+            INPUTS           || OUTPUTS
+            sellIn, quality
+            1, 1             || 0, 0
+            1, 0             || 0, 0 
+            0, 2             || -1, 0
+
+Aged Brie:  
+            INPUTS           || OUTPUTS
+            sellIn, quality
+            1, 1             || 0, 2
+            10, 50           || 9, 50  
+            0, 2             || -1, 0  
+
+Backstage passes to a TAFKAL80ETC concert:
+
+            INPUTS           || OUTPUTS
+            sellIn, quality
+            20, 1            || 19, 2
+            10, 1            || 9, 3  
+            5, 1             || 4, 4
+            0, 10            || -1, 0
+            15, 50           || 14, 50
+            10, 50           || 9, 50
+            5, 50            || 4, 50
+
+Conjured:
+            INPUTS           || OUTPUTS
+            sellIn, quality
+            5, 50            || 4, 48
+            0, 4             || -1, 0
+
+Sulfuras, Hand of Ragnaros:
+            INPUTS           || OUTPUTS
+            sellIn, quality
+            0, 80            || 0, 80

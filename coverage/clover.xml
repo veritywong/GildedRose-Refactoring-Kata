@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687532257583" clover="3.2.0">
-  <project timestamp="1687532257583" name="All files">
+<coverage generated="1687532308436" clover="3.2.0">
+  <project timestamp="1687532308436" name="All files">
     <metrics statements="36" coveredstatements="36" conditionals="31" coveredconditionals="29" methods="11" coveredmethods="11" elements="78" coveredelements="76" complexity="0" loc="36" ncloc="36" packages="1" files="1" classes="1"/>
     <file name="gildedRose.js" path="/Users/Verity/Projects/week_10/GildedRose-Refactoring-Kata/gildedRose.js">
       <metrics statements="36" coveredstatements="36" conditionals="31" coveredconditionals="29" methods="11" coveredmethods="11"/>

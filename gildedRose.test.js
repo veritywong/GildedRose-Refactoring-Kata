@@ -3,16 +3,25 @@ const {Shop, Item} = require("./gildedRose");
 describe("Shop", () => {
  
   test("regularItems decrease sellIn and quality by 1", () => {
-    const items = new Item("foo", 0, 1)
+    const items = new Item("foo", 1, 1)
     const gildedRose = new Shop([items]);
     const itemUpdate = gildedRose.updateQuality();
     expect(itemUpdate[0].name).toBe("foo");
-    expect(itemUpdate[0].sellIn).toBe(-1);
+    expect(itemUpdate[0].sellIn).toBe(0);
     expect(itemUpdate[0].quality).toBe(0);
   });
   
   test("item quality can not go below 0", () => {
-    const items = new Item("foo", 0, 0)
+    const items = new Item("foo", 1, 0)
+    const gildedRose = new Shop([items]);
+    const itemUpdate = gildedRose.updateQuality();
+    expect(itemUpdate[0].name).toBe("foo");
+    expect(itemUpdate[0].sellIn).toBe(0);
+    expect(itemUpdate[0].quality).toBe(0);
+  });
+  
+  test("item quality decreases by 2 when sellIn passed", () => {
+    const items = new Item("foo", 0, 2)
     const gildedRose = new Shop([items]);
     const itemUpdate = gildedRose.updateQuality();
     expect(itemUpdate[0].name).toBe("foo");
@@ -21,11 +30,11 @@ describe("Shop", () => {
   });
   
   test("agedBrie goes up in quality by 1", () => {
-    const items = new Item("Aged Brie", 10, 1);
+    const items = new Item("Aged Brie", 1, 1);
     const gildedRose = new Shop([items]);
     const itemUpdate = gildedRose.updateQuality();
     expect(itemUpdate[0].name).toBe("Aged Brie");
-    expect(itemUpdate[0].sellIn).toBe(9);
+    expect(itemUpdate[0].sellIn).toBe(0);
     expect(itemUpdate[0].quality).toBe(2);
   })
 
@@ -108,6 +117,15 @@ describe("Shop", () => {
     expect(itemUpdate[0].name).toBe("Conjured");
     expect(itemUpdate[0].sellIn).toBe(4);
     expect(itemUpdate[0].quality).toBe(48);
+  })
+
+  test("conjured decreases in quality by 4 when sellIn passed", () => {
+    const items = new Item("Conjured", 0, 4);
+    const gildedRose = new Shop([items]);
+    const itemUpdate = gildedRose.updateQuality();
+    expect(itemUpdate[0].name).toBe("Conjured");
+    expect(itemUpdate[0].sellIn).toBe(-1);
+    expect(itemUpdate[0].quality).toBe(0);
   })
 
   test("sulfuras quality and sellIn stays the same", () => {

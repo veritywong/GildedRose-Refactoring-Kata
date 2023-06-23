@@ -23,7 +23,7 @@ class Shop {
       } else if (this.checkItemIsAgedBrie(item)) {
         this.updateAgedBrie(item);
       } else if (this.checkItemIsConjured(item)) {
-        item.quality -= 2;
+        this.updateConjured(item);
       } else if (this.checkItemIsSulfuras(item)) {
         item.sellIn++;
       }
@@ -46,12 +46,22 @@ class Shop {
     } else if (item.sellIn < 11 && item.quality < 49) {
       item.quality += 2;
     } else if (item.quality < 50) {
-        item.quality++;
+      item.quality++;
+    }
+  }
+
+  updateConjured(item) {
+    if (item.quality > 3 && item.sellIn < 1) {
+      item.quality -= 4;
+    } else if (item.quality > 0) {
+      item.quality -= 2;
     }
   }
 
   updateRegularItem(item) {
-    if (item.quality > 0) {
+    if (item.quality > 1 && item.sellIn < 1) {
+      item.quality -= 2;
+    } else if (item.quality > 0) {
       item.quality--;
     }
   }
