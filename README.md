@@ -4,8 +4,10 @@
 I started by reading throught the specifications and taking notes on each shop item and how they needed to be updated.
 I then wrote tests for each item to show that the current code fulfilled the criteria.
 Once I had all tests passing, I started refactoring the codebase. I started by separating each update into its own item category and calling this in the general updateQuality function. As I updated each item, I ran the tests to ensure the requirementes were still being met.
+
 Once I had refactored the existing code, I created a new test for the new item to be added, 'Conjured', I then went on to write a function update for this.
 Once I had all tests passing, I re-read through the specifications, and added any tests and specifications I had missed.
+
 Finally I updated the README to summarise the expectations for each item, and to include an input and output expectation for each item and each test. 
 
 ======================================
@@ -51,30 +53,31 @@ legendary item and as such its Quality is 80 and it never alters.
 
 class Shop updates the quality and sellIn of each item. The sellIn is the number of days to sell the item.
 
-When Regular Item:
-    qualityUpdates => sellIn - 1, quality - 1
-    (quality can not go below 0)
-    if sellIn < 0 , quality - 2
+**When Regular Item:**
+    -qualityUpdates => sellIn - 1, quality - 1
+    -(quality can not go below 0)
+    -if sellIn < 0 , quality - 2
 
-When Aged Brie:
-    qualityUpdates => sellIn -1, qualtiy + 1
-    (quality can not go above 50)
+**When Aged Brie:**
+    -qualityUpdates => sellIn -1, qualtiy + 1
+    -(quality can not go above 50)
 
 
-When Sulfuras:
-    qualityUpdates => sellIn always 0, quality always 80
+**When Sulfuras:**
+    -qualityUpdates => sellIn always 0, quality always 80
 
-When BackStage Passes:
+**When BackStage Passes:**
 
-    sellIn > 5 && sellIn <= 10 , quality +2
-    sellIn <=5   , quliaty +3
-    sellIn <= 0 , quality = 0
+    -sellIn > 5 && sellIn <= 10 , quality +2
+    -sellIn <=5   , quliaty +3
+    -sellIn <= 0 , quality = 0
 
-ADD
-'Conjured' - quality -2 each day, and -4 when sellIn < 0
+**ADD**
+    -'Conjured' - quality -2 each day, and -4 when sellIn < 0
 
 ## INPUTS and OUTPUTS
 
+```
 
 Regular Item:   
             INPUTS           || OUTPUTS
@@ -113,6 +116,7 @@ Sulfuras, Hand of Ragnaros:
             sellIn, quality
             0, 80            || 0, 80
 
+```
 
 ## Passing Tests
 
